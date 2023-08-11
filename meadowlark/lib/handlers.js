@@ -9,6 +9,13 @@ exports.about = (req, res) =>
 exports.notFound = (req, res) =>
   res.render('404')
 
+exports.headers = (req, res) => {
+  res.type('text/plain')
+  const headers = Object.entries(req.headers)
+    .map(([key, value]) => `${key}: ${value}`)
+  res.send(headers.join('\n'))
+}
+
 // Express recognizes the error handler by way of its four
 // arguments, so we have to disable ESLint's no-unused-vars rule
 /* eslint-disable no-unused-vars */
