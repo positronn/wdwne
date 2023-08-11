@@ -5,19 +5,6 @@ const handlers = require('./lib/handlers')
 const app = express()
 const port = process.env.PORT || 3000
 
-const tours = [
-  {
-    id: 0,
-    name: 'Hood River',
-    price: 99.99
-  },
-  {
-    id: 1,
-    name: 'Oregon Coast',
-    price: 149.95
-  }
-]
-
 //                          configuration
 //
 // configure handlebars view engine
@@ -39,9 +26,11 @@ app.get('/about', handlers.about)
 
 app.get('/headers', handlers.headers)
 
-app.get('/params', handlers.params)
+app.get('/api/tours', handlers.tours)
 
-app.get('/api/tours', (req, res) => res.json(tours))
+app.put('/api/tour/:id', handlers.tourPut)
+
+app.delete('/api/tour/:id', handlers.tourDelete)
 
 // custom 404 page
 app.use(handlers.notFound)
