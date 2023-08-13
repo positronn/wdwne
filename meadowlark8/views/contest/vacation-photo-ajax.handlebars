@@ -41,8 +41,7 @@
       .addEventListener('submit', evt => {
         evt.preventDefault()
         const body = new FormData(evt.target)
-        const container =
-          document.getElementById('vacationPhotoContestFormContainer')
+        const container = document.getElementById('vacationPhotoContestFormContainer')
         fetch('/api/vacation-photo-contest/{{year}}/{{month}}', { method: 'post', body })
           .then(resp => {
             if(resp.status < 200 || resp.status >= 300)
